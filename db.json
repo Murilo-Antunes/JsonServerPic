@@ -1,0 +1,1061 @@
+{
+  "companies": [
+    {
+      "id": "cmp_001",
+      "legalName": "Café Aurora LTDA",
+      "tradeName": "Café Aurora",
+      "document": "12.345.678/0001-90",
+      "email": "contato@cafeaurora.com.br",
+      "phone": "11987654321",
+      "segment": "Alimentação e Bebidas",
+      "status": "ACTIVE",
+      "address": {
+        "zipCode": "06000-000",
+        "street": "Rua das Flores",
+        "number": "125",
+        "complement": "Loja 02",
+        "city": "Osasco",
+        "state": "SP"
+      },
+      "createdAt": "2026-08-15T10:00:00Z",
+      "updatedAt": "2026-10-01T14:20:00Z"
+    },
+    {
+      "id": "cmp_002",
+      "legalName": "Studio Move LTDA",
+      "tradeName": "Studio Move",
+      "document": "98.765.432/0001-10",
+      "email": "contato@studiomove.com.br",
+      "phone": "11976543210",
+      "segment": "Saúde e Bem-estar",
+      "status": "ACTIVE",
+      "address": {
+        "zipCode": "06400-000",
+        "street": "Avenida Central",
+        "number": "840",
+        "complement": "Sala 12",
+        "city": "Barueri",
+        "state": "SP"
+      },
+      "createdAt": "2026-07-20T09:00:00Z",
+      "updatedAt": "2026-09-28T16:10:00Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "usr_001",
+      "companyId": "cmp_001",
+      "name": "Murilo Campos",
+      "email": "admin@cafeaurora.com.br",
+      "password": "123456",
+      "role": "ADMIN",
+      "status": "ACTIVE",
+      "phone": "11999990001",
+      "lastLoginAt": "2026-10-06T18:30:00Z",
+      "createdAt": "2026-08-15T10:05:00Z"
+    },
+    {
+      "id": "usr_002",
+      "companyId": "cmp_001",
+      "name": "Ana Souza",
+      "email": "ana@cafeaurora.com.br",
+      "password": "123456",
+      "role": "MANAGER",
+      "status": "ACTIVE",
+      "phone": "11999990002",
+      "lastLoginAt": "2026-10-05T13:20:00Z",
+      "createdAt": "2026-08-16T11:00:00Z"
+    },
+    {
+      "id": "usr_003",
+      "companyId": "cmp_002",
+      "name": "Lucas Almeida",
+      "email": "admin@studiomove.com.br",
+      "password": "123456",
+      "role": "ADMIN",
+      "status": "ACTIVE",
+      "phone": "11999990003",
+      "lastLoginAt": "2026-10-04T09:10:00Z",
+      "createdAt": "2026-07-20T09:10:00Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "cat_001",
+      "companyId": "cmp_001",
+      "name": "Cafés",
+      "description": "Cafés especiais e tradicionais",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "cat_002",
+      "companyId": "cmp_001",
+      "name": "Bebidas",
+      "description": "Bebidas quentes e geladas",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "cat_003",
+      "companyId": "cmp_001",
+      "name": "Doces",
+      "description": "Doces e sobremesas",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "cat_004",
+      "companyId": "cmp_001",
+      "name": "Salgados",
+      "description": "Salgados e lanches",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "cat_005",
+      "companyId": "cmp_002",
+      "name": "Planos",
+      "description": "Planos de treinamento",
+      "status": "ACTIVE"
+    },
+    {
+      "id": "cat_006",
+      "companyId": "cmp_002",
+      "name": "Serviços",
+      "description": "Serviços de avaliação e acompanhamento",
+      "status": "ACTIVE"
+    }
+  ],
+  "products": [
+    {
+      "id": "prd_001",
+      "companyId": "cmp_001",
+      "categoryId": "cat_001",
+      "name": "Café Especial 250g",
+      "sku": "CAF-250-ESP",
+      "description": "Café especial torrado e moído, com notas de chocolate e caramelo.",
+      "price": 24.9,
+      "cost": 11.5,
+      "stock": 32,
+      "minimumStock": 10,
+      "status": "ACTIVE",
+      "imageUrl": "/assets/products/cafe-especial.jpg",
+      "createdAt": "2026-08-20T10:00:00Z",
+      "updatedAt": "2026-10-05T12:00:00Z"
+    },
+    {
+      "id": "prd_002",
+      "companyId": "cmp_001",
+      "categoryId": "cat_001",
+      "name": "Café Tradicional 500g",
+      "sku": "CAF-500-TRA",
+      "description": "Café tradicional torrado e moído.",
+      "price": 19.9,
+      "cost": 9.2,
+      "stock": 54,
+      "minimumStock": 15,
+      "status": "ACTIVE",
+      "imageUrl": "/assets/products/cafe-tradicional.jpg",
+      "createdAt": "2026-08-20T10:10:00Z",
+      "updatedAt": "2026-10-02T10:00:00Z"
+    },
+    {
+      "id": "prd_003",
+      "companyId": "cmp_001",
+      "categoryId": "cat_002",
+      "name": "Cappuccino Cremoso",
+      "sku": "CAP-001",
+      "description": "Cappuccino cremoso com canela.",
+      "price": 18.9,
+      "cost": 7.8,
+      "stock": 8,
+      "minimumStock": 10,
+      "status": "ACTIVE",
+      "imageUrl": "/assets/products/cappuccino.jpg",
+      "createdAt": "2026-08-21T09:00:00Z",
+      "updatedAt": "2026-10-06T08:00:00Z"
+    },
+    {
+      "id": "prd_004",
+      "companyId": "cmp_001",
+      "categoryId": "cat_002",
+      "name": "Cold Brew 300ml",
+      "sku": "CBR-300",
+      "description": "Café extraído a frio servido gelado.",
+      "price": 16.9,
+      "cost": 6.4,
+      "stock": 21,
+      "minimumStock": 8,
+      "status": "ACTIVE",
+      "imageUrl": "/assets/products/cold-brew.jpg",
+      "createdAt": "2026-08-21T09:20:00Z",
+      "updatedAt": "2026-10-04T09:00:00Z"
+    },
+    {
+      "id": "prd_005",
+      "companyId": "cmp_001",
+      "categoryId": "cat_003",
+      "name": "Brownie de Chocolate",
+      "sku": "BRO-001",
+      "description": "Brownie artesanal com chocolate meio amargo.",
+      "price": 12.9,
+      "cost": 5.1,
+      "stock": 6,
+      "minimumStock": 12,
+      "status": "ACTIVE",
+      "imageUrl": "/assets/products/brownie.jpg",
+      "createdAt": "2026-08-22T11:00:00Z",
+      "updatedAt": "2026-10-06T11:00:00Z"
+    },
+    {
+      "id": "prd_006",
+      "companyId": "cmp_001",
+      "categoryId": "cat_003",
+      "name": "Cheesecake de Frutas Vermelhas",
+      "sku": "CHE-001",
+      "description": "Cheesecake artesanal com calda de frutas vermelhas.",
+      "price": 18.5,
+      "cost": 8.3,
+      "stock": 14,
+      "minimumStock": 5,
+      "status": "ACTIVE",
+      "imageUrl": "/assets/products/cheesecake.jpg",
+      "createdAt": "2026-08-22T11:20:00Z",
+      "updatedAt": "2026-09-30T14:00:00Z"
+    },
+    {
+      "id": "prd_007",
+      "companyId": "cmp_001",
+      "categoryId": "cat_004",
+      "name": "Pão de Queijo",
+      "sku": "PDQ-001",
+      "description": "Porção com 6 unidades de pão de queijo.",
+      "price": 10.9,
+      "cost": 4.2,
+      "stock": 40,
+      "minimumStock": 10,
+      "status": "ACTIVE",
+      "imageUrl": "/assets/products/pao-de-queijo.jpg",
+      "createdAt": "2026-08-23T08:00:00Z",
+      "updatedAt": "2026-10-01T08:00:00Z"
+    },
+    {
+      "id": "prd_008",
+      "companyId": "cmp_001",
+      "categoryId": "cat_004",
+      "name": "Croissant de Presunto e Queijo",
+      "sku": "CRO-001",
+      "description": "Croissant folhado recheado com presunto e queijo.",
+      "price": 15.9,
+      "cost": 6.8,
+      "stock": 3,
+      "minimumStock": 8,
+      "status": "ACTIVE",
+      "imageUrl": "/assets/products/croissant.jpg",
+      "createdAt": "2026-08-23T08:20:00Z",
+      "updatedAt": "2026-10-06T10:00:00Z"
+    },
+    {
+      "id": "prd_009",
+      "companyId": "cmp_001",
+      "categoryId": "cat_003",
+      "name": "Cookie Chocolate",
+      "sku": "CKE-001",
+      "description": "Cookie artesanal com gotas de chocolate.",
+      "price": 8.9,
+      "cost": 3.2,
+      "stock": 0,
+      "minimumStock": 10,
+      "status": "INACTIVE",
+      "imageUrl": "/assets/products/cookie.jpg",
+      "createdAt": "2026-08-24T09:00:00Z",
+      "updatedAt": "2026-10-03T15:00:00Z"
+    },
+    {
+      "id": "prd_010",
+      "companyId": "cmp_002",
+      "categoryId": "cat_005",
+      "name": "Plano Performance",
+      "sku": "PLN-PERF",
+      "description": "Plano mensal com acompanhamento completo.",
+      "price": 199.9,
+      "cost": 45.0,
+      "stock": 999,
+      "minimumStock": 0,
+      "status": "ACTIVE",
+      "imageUrl": "/assets/products/plano-performance.jpg",
+      "createdAt": "2026-07-25T09:00:00Z",
+      "updatedAt": "2026-10-01T09:00:00Z"
+    }
+  ],
+  "customers": [
+    {
+      "id": "cus_001",
+      "companyId": "cmp_001",
+      "name": "João da Silva",
+      "email": "joao.silva@email.com",
+      "phone": "11988880001",
+      "status": "ACTIVE",
+      "totalPurchases": 1240.5,
+      "purchaseCount": 18,
+      "lastPurchaseAt": "2026-10-06T14:30:00Z",
+      "createdAt": "2026-08-25T12:00:00Z"
+    },
+    {
+      "id": "cus_002",
+      "companyId": "cmp_001",
+      "name": "Maria Santos",
+      "email": "maria.santos@email.com",
+      "phone": "11988880002",
+      "status": "ACTIVE",
+      "totalPurchases": 842.3,
+      "purchaseCount": 12,
+      "lastPurchaseAt": "2026-10-05T17:10:00Z",
+      "createdAt": "2026-08-26T10:30:00Z"
+    },
+    {
+      "id": "cus_003",
+      "companyId": "cmp_001",
+      "name": "Pedro Lima",
+      "email": "pedro.lima@email.com",
+      "phone": "11988880003",
+      "status": "ACTIVE",
+      "totalPurchases": 420.8,
+      "purchaseCount": 7,
+      "lastPurchaseAt": "2026-10-04T12:40:00Z",
+      "createdAt": "2026-09-01T09:00:00Z"
+    },
+    {
+      "id": "cus_004",
+      "companyId": "cmp_001",
+      "name": "Juliana Costa",
+      "email": "juliana.costa@email.com",
+      "phone": "11988880004",
+      "status": "ACTIVE",
+      "totalPurchases": 1560.2,
+      "purchaseCount": 21,
+      "lastPurchaseAt": "2026-10-03T18:00:00Z",
+      "createdAt": "2026-08-28T14:00:00Z"
+    },
+    {
+      "id": "cus_005",
+      "companyId": "cmp_001",
+      "name": "Rafael Oliveira",
+      "email": "rafael.oliveira@email.com",
+      "phone": "11988880005",
+      "status": "ACTIVE",
+      "totalPurchases": 315.6,
+      "purchaseCount": 5,
+      "lastPurchaseAt": "2026-10-02T15:20:00Z",
+      "createdAt": "2026-09-05T11:00:00Z"
+    },
+    {
+      "id": "cus_006",
+      "companyId": "cmp_001",
+      "name": "Beatriz Martins",
+      "email": "beatriz.martins@email.com",
+      "phone": "11988880006",
+      "status": "ACTIVE",
+      "totalPurchases": 928.4,
+      "purchaseCount": 13,
+      "lastPurchaseAt": "2026-10-01T16:50:00Z",
+      "createdAt": "2026-09-02T12:00:00Z"
+    },
+    {
+      "id": "cus_007",
+      "companyId": "cmp_001",
+      "name": "Gabriel Rocha",
+      "email": "gabriel.rocha@email.com",
+      "phone": "11988880007",
+      "status": "INACTIVE",
+      "totalPurchases": 180.0,
+      "purchaseCount": 3,
+      "lastPurchaseAt": "2026-09-20T13:00:00Z",
+      "createdAt": "2026-09-10T10:00:00Z"
+    },
+    {
+      "id": "cus_008",
+      "companyId": "cmp_001",
+      "name": "Camila Ferreira",
+      "email": "camila.ferreira@email.com",
+      "phone": "11988880008",
+      "status": "ACTIVE",
+      "totalPurchases": 650.9,
+      "purchaseCount": 9,
+      "lastPurchaseAt": "2026-09-29T11:30:00Z",
+      "createdAt": "2026-09-12T13:00:00Z"
+    },
+    {
+      "id": "cus_009",
+      "companyId": "cmp_001",
+      "name": "Lucas Mendes",
+      "email": "lucas.mendes@email.com",
+      "phone": "11988880009",
+      "status": "ACTIVE",
+      "totalPurchases": 510.7,
+      "purchaseCount": 8,
+      "lastPurchaseAt": "2026-09-27T17:00:00Z",
+      "createdAt": "2026-09-15T09:00:00Z"
+    },
+    {
+      "id": "cus_010",
+      "companyId": "cmp_001",
+      "name": "Fernanda Alves",
+      "email": "fernanda.alves@email.com",
+      "phone": "11988880010",
+      "status": "ACTIVE",
+      "totalPurchases": 1105.3,
+      "purchaseCount": 15,
+      "lastPurchaseAt": "2026-09-25T14:00:00Z",
+      "createdAt": "2026-09-18T10:00:00Z"
+    },
+    {
+      "id": "cus_101",
+      "companyId": "cmp_002",
+      "name": "Mariana Lopes",
+      "email": "mariana@email.com",
+      "phone": "11977770001",
+      "status": "ACTIVE",
+      "totalPurchases": 399.8,
+      "purchaseCount": 2,
+      "lastPurchaseAt": "2026-10-03T10:00:00Z",
+      "createdAt": "2026-09-01T10:00:00Z"
+    }
+  ],
+  "sales": [
+    {
+      "id": "sale_001",
+      "companyId": "cmp_001",
+      "customerId": "cus_001",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_001",
+          "quantity": 2,
+          "unitPrice": 24.9,
+          "total": 49.8
+        },
+        {
+          "productId": "prd_007",
+          "quantity": 1,
+          "unitPrice": 10.9,
+          "total": 10.9
+        }
+      ],
+      "subtotal": 60.7,
+      "discount": 0,
+      "total": 60.7,
+      "payment": {
+        "method": "PIX",
+        "status": "APPROVED",
+        "transactionId": "txn_001"
+      },
+      "createdAt": "2026-10-06T14:30:00Z"
+    },
+    {
+      "id": "sale_002",
+      "companyId": "cmp_001",
+      "customerId": "cus_002",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_003",
+          "quantity": 2,
+          "unitPrice": 18.9,
+          "total": 37.8
+        },
+        {
+          "productId": "prd_005",
+          "quantity": 1,
+          "unitPrice": 12.9,
+          "total": 12.9
+        }
+      ],
+      "subtotal": 50.7,
+      "discount": 0,
+      "total": 50.7,
+      "payment": {
+        "method": "CREDIT_CARD",
+        "status": "APPROVED",
+        "transactionId": "txn_002"
+      },
+      "createdAt": "2026-10-05T17:10:00Z"
+    },
+    {
+      "id": "sale_003",
+      "companyId": "cmp_001",
+      "customerId": "cus_003",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_004",
+          "quantity": 2,
+          "unitPrice": 16.9,
+          "total": 33.8
+        }
+      ],
+      "subtotal": 33.8,
+      "discount": 0,
+      "total": 33.8,
+      "payment": {
+        "method": "PIX",
+        "status": "APPROVED",
+        "transactionId": "txn_003"
+      },
+      "createdAt": "2026-10-04T12:40:00Z"
+    },
+    {
+      "id": "sale_004",
+      "companyId": "cmp_001",
+      "customerId": "cus_004",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_006",
+          "quantity": 2,
+          "unitPrice": 18.5,
+          "total": 37.0
+        },
+        {
+          "productId": "prd_001",
+          "quantity": 1,
+          "unitPrice": 24.9,
+          "total": 24.9
+        }
+      ],
+      "subtotal": 61.9,
+      "discount": 5.0,
+      "total": 56.9,
+      "payment": {
+        "method": "DEBIT_CARD",
+        "status": "APPROVED",
+        "transactionId": "txn_004"
+      },
+      "createdAt": "2026-10-03T18:00:00Z"
+    },
+    {
+      "id": "sale_005",
+      "companyId": "cmp_001",
+      "customerId": "cus_005",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_008",
+          "quantity": 1,
+          "unitPrice": 15.9,
+          "total": 15.9
+        },
+        {
+          "productId": "prd_007",
+          "quantity": 1,
+          "unitPrice": 10.9,
+          "total": 10.9
+        }
+      ],
+      "subtotal": 26.8,
+      "discount": 0,
+      "total": 26.8,
+      "payment": {
+        "method": "PIX",
+        "status": "APPROVED",
+        "transactionId": "txn_005"
+      },
+      "createdAt": "2026-10-02T15:20:00Z"
+    },
+    {
+      "id": "sale_006",
+      "companyId": "cmp_001",
+      "customerId": "cus_006",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_002",
+          "quantity": 2,
+          "unitPrice": 19.9,
+          "total": 39.8
+        },
+        {
+          "productId": "prd_005",
+          "quantity": 2,
+          "unitPrice": 12.9,
+          "total": 25.8
+        }
+      ],
+      "subtotal": 65.6,
+      "discount": 0,
+      "total": 65.6,
+      "payment": {
+        "method": "CREDIT_CARD",
+        "status": "APPROVED",
+        "transactionId": "txn_006"
+      },
+      "createdAt": "2026-10-01T16:50:00Z"
+    },
+    {
+      "id": "sale_007",
+      "companyId": "cmp_001",
+      "customerId": "cus_001",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_001",
+          "quantity": 3,
+          "unitPrice": 24.9,
+          "total": 74.7
+        }
+      ],
+      "subtotal": 74.7,
+      "discount": 0,
+      "total": 74.7,
+      "payment": {
+        "method": "PIX",
+        "status": "APPROVED",
+        "transactionId": "txn_007"
+      },
+      "createdAt": "2026-09-30T10:20:00Z"
+    },
+    {
+      "id": "sale_008",
+      "companyId": "cmp_001",
+      "customerId": "cus_008",
+      "status": "REFUNDED",
+      "items": [
+        {
+          "productId": "prd_006",
+          "quantity": 1,
+          "unitPrice": 18.5,
+          "total": 18.5
+        }
+      ],
+      "subtotal": 18.5,
+      "discount": 0,
+      "total": 18.5,
+      "payment": {
+        "method": "PIX",
+        "status": "REFUNDED",
+        "transactionId": "txn_008"
+      },
+      "createdAt": "2026-09-29T11:30:00Z"
+    },
+    {
+      "id": "sale_009",
+      "companyId": "cmp_001",
+      "customerId": "cus_009",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_003",
+          "quantity": 1,
+          "unitPrice": 18.9,
+          "total": 18.9
+        },
+        {
+          "productId": "prd_007",
+          "quantity": 2,
+          "unitPrice": 10.9,
+          "total": 21.8
+        }
+      ],
+      "subtotal": 40.7,
+      "discount": 0,
+      "total": 40.7,
+      "payment": {
+        "method": "CREDIT_CARD",
+        "status": "APPROVED",
+        "transactionId": "txn_009"
+      },
+      "createdAt": "2026-09-27T17:00:00Z"
+    },
+    {
+      "id": "sale_010",
+      "companyId": "cmp_001",
+      "customerId": "cus_010",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_001",
+          "quantity": 2,
+          "unitPrice": 24.9,
+          "total": 49.8
+        },
+        {
+          "productId": "prd_006",
+          "quantity": 1,
+          "unitPrice": 18.5,
+          "total": 18.5
+        }
+      ],
+      "subtotal": 68.3,
+      "discount": 3.3,
+      "total": 65.0,
+      "payment": {
+        "method": "PIX",
+        "status": "APPROVED",
+        "transactionId": "txn_010"
+      },
+      "createdAt": "2026-09-25T14:00:00Z"
+    },
+    {
+      "id": "sale_011",
+      "companyId": "cmp_001",
+      "customerId": "cus_004",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_002",
+          "quantity": 3,
+          "unitPrice": 19.9,
+          "total": 59.7
+        }
+      ],
+      "subtotal": 59.7,
+      "discount": 0,
+      "total": 59.7,
+      "payment": {
+        "method": "PIX",
+        "status": "APPROVED",
+        "transactionId": "txn_011"
+      },
+      "createdAt": "2026-09-24T12:30:00Z"
+    },
+    {
+      "id": "sale_012",
+      "companyId": "cmp_001",
+      "customerId": "cus_002",
+      "status": "PENDING",
+      "items": [
+        {
+          "productId": "prd_004",
+          "quantity": 1,
+          "unitPrice": 16.9,
+          "total": 16.9
+        },
+        {
+          "productId": "prd_005",
+          "quantity": 1,
+          "unitPrice": 12.9,
+          "total": 12.9
+        }
+      ],
+      "subtotal": 29.8,
+      "discount": 0,
+      "total": 29.8,
+      "payment": {
+        "method": "CREDIT_CARD",
+        "status": "PENDING",
+        "transactionId": "txn_012"
+      },
+      "createdAt": "2026-09-23T16:10:00Z"
+    },
+    {
+      "id": "sale_101",
+      "companyId": "cmp_002",
+      "customerId": "cus_101",
+      "status": "COMPLETED",
+      "items": [
+        {
+          "productId": "prd_010",
+          "quantity": 1,
+          "unitPrice": 199.9,
+          "total": 199.9
+        }
+      ],
+      "subtotal": 199.9,
+      "discount": 0,
+      "total": 199.9,
+      "payment": {
+        "method": "PIX",
+        "status": "APPROVED",
+        "transactionId": "txn_101"
+      },
+      "createdAt": "2026-10-03T10:00:00Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "txn_001",
+      "companyId": "cmp_001",
+      "saleId": "sale_001",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_001",
+      "amount": 60.7,
+      "status": "APPROVED",
+      "paymentMethod": "PIX",
+      "createdAt": "2026-10-06T14:30:00Z"
+    },
+    {
+      "id": "txn_002",
+      "companyId": "cmp_001",
+      "saleId": "sale_002",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_002",
+      "amount": 50.7,
+      "status": "APPROVED",
+      "paymentMethod": "CREDIT_CARD",
+      "createdAt": "2026-10-05T17:10:00Z"
+    },
+    {
+      "id": "txn_003",
+      "companyId": "cmp_001",
+      "saleId": "sale_003",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_003",
+      "amount": 33.8,
+      "status": "APPROVED",
+      "paymentMethod": "PIX",
+      "createdAt": "2026-10-04T12:40:00Z"
+    },
+    {
+      "id": "txn_004",
+      "companyId": "cmp_001",
+      "saleId": "sale_004",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_004",
+      "amount": 56.9,
+      "status": "APPROVED",
+      "paymentMethod": "DEBIT_CARD",
+      "createdAt": "2026-10-03T18:00:00Z"
+    },
+    {
+      "id": "txn_005",
+      "companyId": "cmp_001",
+      "saleId": "sale_005",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_005",
+      "amount": 26.8,
+      "status": "APPROVED",
+      "paymentMethod": "PIX",
+      "createdAt": "2026-10-02T15:20:00Z"
+    },
+    {
+      "id": "txn_006",
+      "companyId": "cmp_001",
+      "saleId": "sale_006",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_006",
+      "amount": 65.6,
+      "status": "APPROVED",
+      "paymentMethod": "CREDIT_CARD",
+      "createdAt": "2026-10-01T16:50:00Z"
+    },
+    {
+      "id": "txn_007",
+      "companyId": "cmp_001",
+      "saleId": "sale_007",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_007",
+      "amount": 74.7,
+      "status": "APPROVED",
+      "paymentMethod": "PIX",
+      "createdAt": "2026-09-30T10:20:00Z"
+    },
+    {
+      "id": "txn_008",
+      "companyId": "cmp_001",
+      "saleId": "sale_008",
+      "type": "REFUND",
+      "category": "SALE",
+      "description": "Estorno da venda sale_008",
+      "amount": -18.5,
+      "status": "REFUNDED",
+      "paymentMethod": "PIX",
+      "createdAt": "2026-09-29T11:30:00Z"
+    },
+    {
+      "id": "txn_009",
+      "companyId": "cmp_001",
+      "saleId": "sale_009",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_009",
+      "amount": 40.7,
+      "status": "APPROVED",
+      "paymentMethod": "CREDIT_CARD",
+      "createdAt": "2026-09-27T17:00:00Z"
+    },
+    {
+      "id": "txn_010",
+      "companyId": "cmp_001",
+      "saleId": "sale_010",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_010",
+      "amount": 65.0,
+      "status": "APPROVED",
+      "paymentMethod": "PIX",
+      "createdAt": "2026-09-25T14:00:00Z"
+    },
+    {
+      "id": "txn_011",
+      "companyId": "cmp_001",
+      "saleId": "sale_011",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_011",
+      "amount": 59.7,
+      "status": "APPROVED",
+      "paymentMethod": "PIX",
+      "createdAt": "2026-09-24T12:30:00Z"
+    },
+    {
+      "id": "txn_012",
+      "companyId": "cmp_001",
+      "saleId": "sale_012",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_012",
+      "amount": 29.8,
+      "status": "PENDING",
+      "paymentMethod": "CREDIT_CARD",
+      "createdAt": "2026-09-23T16:10:00Z"
+    },
+    {
+      "id": "txn_fee_001",
+      "companyId": "cmp_001",
+      "saleId": "sale_004",
+      "type": "DEBIT",
+      "category": "FEE",
+      "description": "Taxa de pagamento da venda sale_004",
+      "amount": -1.14,
+      "status": "COMPLETED",
+      "paymentMethod": "DEBIT_CARD",
+      "createdAt": "2026-10-03T18:01:00Z"
+    },
+    {
+      "id": "txn_fee_002",
+      "companyId": "cmp_001",
+      "saleId": "sale_006",
+      "type": "DEBIT",
+      "category": "FEE",
+      "description": "Taxa de pagamento da venda sale_006",
+      "amount": -1.97,
+      "status": "COMPLETED",
+      "paymentMethod": "CREDIT_CARD",
+      "createdAt": "2026-10-01T16:51:00Z"
+    },
+    {
+      "id": "txn_adj_001",
+      "companyId": "cmp_001",
+      "saleId": null,
+      "type": "CREDIT",
+      "category": "ADJUSTMENT",
+      "description": "Ajuste de saldo",
+      "amount": 250.0,
+      "status": "COMPLETED",
+      "paymentMethod": "BALANCE",
+      "createdAt": "2026-09-20T09:00:00Z"
+    },
+    {
+      "id": "txn_101",
+      "companyId": "cmp_002",
+      "saleId": "sale_101",
+      "type": "SALE",
+      "category": "SALE",
+      "description": "Venda sale_101",
+      "amount": 199.9,
+      "status": "COMPLETED",
+      "paymentMethod": "PIX",
+      "createdAt": "2026-10-03T10:00:00Z"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "not_001",
+      "companyId": "cmp_001",
+      "userId": "usr_001",
+      "type": "LOW_STOCK",
+      "title": "Estoque baixo",
+      "message": "O produto Cappuccino Cremoso está com apenas 8 unidades.",
+      "read": false,
+      "createdAt": "2026-10-06T08:30:00Z"
+    },
+    {
+      "id": "not_002",
+      "companyId": "cmp_001",
+      "userId": "usr_001",
+      "type": "LOW_STOCK",
+      "title": "Estoque baixo",
+      "message": "O produto Brownie de Chocolate está com apenas 6 unidades.",
+      "read": false,
+      "createdAt": "2026-10-06T08:32:00Z"
+    },
+    {
+      "id": "not_003",
+      "companyId": "cmp_001",
+      "userId": "usr_001",
+      "type": "SALE_COMPLETED",
+      "title": "Nova venda aprovada",
+      "message": "A venda sale_001 no valor de R$ 60,70 foi aprovada.",
+      "read": false,
+      "createdAt": "2026-10-06T14:30:05Z"
+    },
+    {
+      "id": "not_004",
+      "companyId": "cmp_001",
+      "userId": "usr_001",
+      "type": "PAYMENT_RECEIVED",
+      "title": "Pagamento recebido",
+      "message": "Você recebeu R$ 50,70 via cartão.",
+      "read": true,
+      "createdAt": "2026-10-05T17:10:05Z"
+    },
+    {
+      "id": "not_005",
+      "companyId": "cmp_001",
+      "userId": "usr_001",
+      "type": "SYSTEM",
+      "title": "Relatório mensal disponível",
+      "message": "O relatório de setembro já está disponível.",
+      "read": true,
+      "createdAt": "2026-10-01T09:00:00Z"
+    },
+    {
+      "id": "not_101",
+      "companyId": "cmp_002",
+      "userId": "usr_003",
+      "type": "SALE_COMPLETED",
+      "title": "Nova venda aprovada",
+      "message": "A venda sale_101 no valor de R$ 199,90 foi aprovada.",
+      "read": false,
+      "createdAt": "2026-10-03T10:00:05Z"
+    }
+  ],
+  "settings": [
+    {
+      "id": "set_001",
+      "companyId": "cmp_001",
+      "userId": "usr_001",
+      "notifications": {
+        "sales": true,
+        "payments": true,
+        "lowStock": true,
+        "system": true,
+        "weeklyReports": false
+      },
+      "appearance": {
+        "theme": "light"
+      },
+      "language": "pt-BR"
+    },
+    {
+      "id": "set_002",
+      "companyId": "cmp_002",
+      "userId": "usr_003",
+      "notifications": {
+        "sales": true,
+        "payments": true,
+        "lowStock": false,
+        "system": true,
+        "weeklyReports": true
+      },
+      "appearance": {
+        "theme": "light"
+      },
+      "language": "pt-BR"
+    }
+  ]
+}
