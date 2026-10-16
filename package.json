@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "dotenv": "18.0.6",
-    "json-server": "0.17.4"
+    "json-server": "0.17.4",
+    "jsonwebtoken": "^9.0.3"
   },
   "scripts": {
     "start": "node server.js"
