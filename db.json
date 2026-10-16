@@ -43,6 +43,16 @@
   ],
   "users": [
     {
+      "id": "usr_demo",
+      "companyId": "cmp_001",
+      "name": "Marina Duarte",
+      "email": "marina@cafeaurora.com.br",
+      "password": "$2b$10$DqlsIAqGpJo9FzhrQQKw.u7g7NWBo.0cBRi0xd7ZARr/LG1bZLJJW",
+      "role": "ADMIN",
+      "status": "ACTIVE",
+      "createdAt": "2026-08-15T10:10:00Z"
+    },
+    {
       "id": "usr_001",
       "companyId": "cmp_001",
       "name": "Murilo Campos",

@@ -1,9 +1,26 @@
+/**
+ * Rotas de autenticação para o json-server (referência).
+ *
+ *   POST /auth/register  → cria empresa + administrador e devolve o JWT
+ *   GET  /auth/me        → dados da sessão a partir do token
+ *
+ * Também exporta `requireAuth`, `tenantScope` e `stripPasswords`, que devem
+ * proteger o restante da API (veja server.js).
+ */
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET || 'troque-este-segredo-em-producao';
 const JWT_EXPIRES_IN = '1h';
+const JWT_EXPIRES_IN_REMEMBER = '7d'; // "Manter conectado neste dispositivo"
+
+// Limite de tentativas de login por IP + e-mail (em memória; zera ao reiniciar o servidor).
+const MAX_FAILED_LOGINS = 5;
+const LOGIN_WINDOW_MS = 15 * 60 * 1000;
+const failedLogins = new Map(); // chave → { count, resetAt }
+// Hash de mentira, para o tempo de resposta ser igual quando o e-mail não existe.
+const DUMMY_HASH = bcrypt.hashSync('senha-que-nao-existe', 10);
 
 const onlyDigits = (v) => String(v ?? '').replace(/\D/g, '');
 const newId = (prefix) => `${prefix}_${crypto.randomBytes(4).toString('hex')}`;
@@ -48,10 +65,24 @@ function validateRegister({ company = {}, admin = {} }) {
   return errors;
 }
 
-function signToken(user) {
-  return jwt.sign({ sub: user.id, companyId: user.companyId, role: user.role }, JWT_SECRET, {
-    expiresIn: JWT_EXPIRES_IN,
-  });
+function signToken(user, expiresIn = JWT_EXPIRES_IN) {
+  return jwt.sign({ sub: user.id, companyId: user.companyId, role: user.role }, JWT_SECRET, { expiresIn });
+}
+
+/** Segundos até liberar novas tentativas (0 = pode tentar). */
+function lockedSeconds(key) {
+  const entry = failedLogins.get(key);
+  if (!entry || entry.resetAt <= Date.now()) {
+    failedLogins.delete(key);
+    return 0;
+  }
+  return entry.count >= MAX_FAILED_LOGINS ? Math.ceil((entry.resetAt - Date.now()) / 1000) : 0;
+}
+
+function recordFailedLogin(key) {
+  const entry = failedLogins.get(key);
+  if (!entry || entry.resetAt <= Date.now()) failedLogins.set(key, { count: 1, resetAt: Date.now() + LOGIN_WINDOW_MS });
+  else entry.count += 1;
 }
 
 /** Exige `Authorization: Bearer <jwt>` e coloca o payload em `req.auth`. */
@@ -144,6 +175,42 @@ function authRoutes(server, router) {
     db.write();
 
     res.status(201).json({ accessToken: signToken(userRow), user: publicUser(userRow), company: companyRow });
+  });
+
+  server.post('/auth/login', (req, res) => {
+    const { email, password, remember } = req.body || {};
+    if (!isEmail(email) || typeof password !== 'string' || !password) {
+      return res.status(422).json({ message: 'Informe o e-mail e a senha.' });
+    }
+
+    const normalized = String(email).trim().toLowerCase();
+    const key = `${req.ip}|${normalized}`;
+
+    const wait = lockedSeconds(key);
+    if (wait) {
+      res.set('Retry-After', String(wait));
+      return res.status(429).json({ message: 'Muitas tentativas. Tente novamente em alguns minutos.' });
+    }
+
+    const user = db.get('users').find((u) => String(u.email).toLowerCase() === normalized).value();
+    // Sempre compara com algum hash e usa a mesma mensagem: não revela se o e-mail existe.
+    const passwordOk = bcrypt.compareSync(password, user ? user.password : DUMMY_HASH);
+    if (!user || !passwordOk) {
+      recordFailedLogin(key);
+      return res.status(401).json({ message: 'E-mail ou senha incorretos.' });
+    }
+
+    const company = db.get('companies').find({ id: user.companyId }).value();
+    if (user.status !== 'ACTIVE' || !company || company.status !== 'ACTIVE') {
+      return res.status(403).json({ message: 'Esta conta está inativa. Fale com o suporte.' });
+    }
+
+    failedLogins.delete(key);
+    const updated = db.get('users').find({ id: user.id }).assign({ lastLoginAt: new Date().toISOString() }).value();
+    db.write();
+
+    const accessToken = signToken(updated, remember ? JWT_EXPIRES_IN_REMEMBER : JWT_EXPIRES_IN);
+    res.json({ accessToken, user: publicUser(updated), company });
   });
 
   server.get('/auth/me', requireAuth, (req, res) => {
