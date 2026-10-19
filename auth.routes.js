@@ -234,21 +234,6 @@ function authRoutes(server, router) {
  *    A receber: soma das transações PENDING positivas.
  *  - Dias e meses são contados no fuso de Brasília.
  */
-const { requireAuth } = require('./auth.routes');
-
-const TZ = 'America/Sao_Paulo';
-const MONTHS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
-const PERIODS = ['7d', '30d', '90d', '12m'];
-const SETTLED = ['APPROVED', 'COMPLETED', 'REFUNDED'];
-
-const dayFormatter = new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' });
-const dayKey = (date) => dayFormatter.format(date); // 'AAAA-MM-DD' em Brasília
-const monthKey = (date) => dayKey(date).slice(0, 7); // 'AAAA-MM'
-
-const round2 = (n) => Math.round(n * 100) / 100;
-const round1 = (n) => Math.round(n * 10) / 10;
-const sum = (rows, pick) => rows.reduce((total, row) => total + pick(row), 0);
-const byDateDesc = (a, b) => (a.createdAt < b.createdAt ? 1 : -1);
 
 function addDays(key, delta) {
   const [y, m, d] = key.split('-').map(Number);
@@ -407,7 +392,4 @@ function dashboardRoutes(server, router) {
   });
 }
 
-module.exports = { dashboardRoutes, buildDashboard };
-
-
-module.exports = { authRoutes, requireAuth, tenantScope, stripPasswords, signToken };
+module.exports = { authRoutes, requireAuth, tenantScope, stripPasswords, signToken, dashboardRoutes, buildDashboard  };
