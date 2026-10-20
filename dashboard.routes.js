@@ -12,6 +12,7 @@
  *  - Dias e meses são contados no fuso de Brasília.
  */
 const { requireAuth } = require('./auth.routes');
+const { stockStatus } = require('./stock');
 
 const TZ = 'America/Sao_Paulo';
 const MONTHS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
@@ -134,9 +135,9 @@ function buildDashboard(db, companyId, period) {
     status: SALE_STATUSES[s.status] || 'refused',
   }));
 
-  // ---- Estoque baixo (produtos ativos no limite ou abaixo do mínimo)
+  // ---- Estoque baixo (produtos ativos no limite, abaixo do mínimo ou zerados — mesmo critério da tela de produtos)
   const low = mine('products')
-    .filter((p) => p.status === 'ACTIVE' && p.minimumStock > 0 && p.stock <= p.minimumStock)
+    .filter((p) => p.status === 'ACTIVE' && stockStatus(p) !== 'ok')
     .sort((a, b) => a.stock / a.minimumStock - b.stock / b.minimumStock || a.name.localeCompare(b.name));
   const lowStock = low.slice(0, 5).map((p) => ({ id: p.id, name: p.name, quantity: p.stock, minimum: p.minimumStock }));
 

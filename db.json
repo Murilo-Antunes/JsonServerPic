@@ -286,7 +286,7 @@
       "sku": "PLN-PERF",
       "description": "Plano mensal com acompanhamento completo.",
       "price": 199.9,
-      "cost": 45.0,
+      "cost": 45,
       "stock": 999,
       "minimumStock": 0,
       "status": "ACTIVE",
@@ -375,7 +375,7 @@
       "email": "gabriel.rocha@email.com",
       "phone": "11988880007",
       "status": "INACTIVE",
-      "totalPurchases": 180.0,
+      "totalPurchases": 180,
       "purchaseCount": 3,
       "lastPurchaseAt": "2026-09-20T13:00:00Z",
       "createdAt": "2026-09-10T10:00:00Z"
@@ -521,7 +521,7 @@
           "productId": "prd_006",
           "quantity": 2,
           "unitPrice": 18.5,
-          "total": 37.0
+          "total": 37
         },
         {
           "productId": "prd_001",
@@ -531,7 +531,7 @@
         }
       ],
       "subtotal": 61.9,
-      "discount": 5.0,
+      "discount": 5,
       "total": 56.9,
       "payment": {
         "method": "DEBIT_CARD",
@@ -694,7 +694,7 @@
       ],
       "subtotal": 68.3,
       "discount": 3.3,
-      "total": 65.0,
+      "total": 65,
       "payment": {
         "method": "PIX",
         "status": "APPROVED",
@@ -894,7 +894,7 @@
       "type": "SALE",
       "category": "SALE",
       "description": "Venda sale_010",
-      "amount": 65.0,
+      "amount": 65,
       "status": "APPROVED",
       "paymentMethod": "PIX",
       "createdAt": "2026-09-25T14:00:00Z"
@@ -954,7 +954,7 @@
       "type": "CREDIT",
       "category": "ADJUSTMENT",
       "description": "Ajuste de saldo",
-      "amount": 250.0,
+      "amount": 250,
       "status": "COMPLETED",
       "paymentMethod": "BALANCE",
       "createdAt": "2026-09-20T09:00:00Z"

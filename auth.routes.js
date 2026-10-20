@@ -16,6 +16,7 @@ const JWT_EXPIRES_IN = '1h';
 const JWT_EXPIRES_IN_REMEMBER = '7d'; // "Manter conectado neste dispositivo"
 
 // Limite de tentativas de login por IP + e-mail (em memória; zera ao reiniciar o servidor).
+const DEFAULT_CATEGORIES = ['Geral', 'Serviços', 'Outros'];
 const MAX_FAILED_LOGINS = 5;
 const LOGIN_WINDOW_MS = 15 * 60 * 1000;
 const failedLogins = new Map(); // chave → { count, resetAt }
@@ -98,12 +99,38 @@ function requireAuth(req, res, next) {
   }
 }
 
-/** Multi-empresa: cada usuário só enxerga e grava dados da própria empresa. */
-function tenantScope(req, res, next) {
-  const { companyId } = req.auth;
-  if (req.method === 'GET') req.query.companyId = companyId;
-  else if (req.body && typeof req.body === 'object') req.body.companyId = companyId;
-  next();
+/**
+ * Multi-empresa: cada usuário só enxerga e grava dados da própria empresa.
+ *  - listas: filtra por `companyId`; gravações: força o `companyId` do token
+ *  - /recurso/:id: 404 se a linha for de outra empresa (não revela que ela existe)
+ *  - `users` e `companies` não podem ser alterados por aqui (senha em texto puro e troca de
+ *    papel seriam possíveis): precisam de rotas próprias.
+ */
+function tenantScope(router) {
+  const READ_ONLY = ['users', 'companies'];
+
+  return (req, res, next) => {
+    const { companyId } = req.auth;
+    const [, resource, id] = req.path.split('/');
+    const isCompanies = resource === 'companies';
+
+    if (req.method !== 'GET' && READ_ONLY.includes(resource)) {
+      return res.status(403).json({ message: 'Esta operação ainda não está disponível.' });
+    }
+
+    if (id) {
+      const rows = router.db.get(resource).value();
+      const row = Array.isArray(rows) ? rows.find((r) => String(r.id) === id) : null;
+      const owner = row ? (isCompanies ? row.id : row.companyId) : companyId;
+      if (owner !== companyId) return res.status(404).json({ message: 'Não encontrado.' });
+    } else if (req.method === 'GET') {
+      if (isCompanies) req.query.id = companyId;
+      else req.query.companyId = companyId;
+    } else if (req.body && typeof req.body === 'object') {
+      req.body.companyId = companyId;
+    }
+    next();
+  };
 }
 
 /** Nunca devolve hash de senha, mesmo em GET /users. */
@@ -168,8 +195,14 @@ function authRoutes(server, router) {
       language: 'pt-BR',
     };
 
+    // Categorias iniciais, para a empresa já conseguir cadastrar produtos.
+    const categoryRows = DEFAULT_CATEGORIES.map((name) => ({
+      id: newId('cat'), companyId: companyRow.id, name, description: '', status: 'ACTIVE',
+    }));
+
     // Tudo em memória e uma única gravação em disco: ou entra tudo, ou nada.
     db.get('companies').push(companyRow).value();
+    db.get('categories').push(...categoryRows).value();
     db.get('users').push(userRow).value();
     db.get('settings').push(settingsRow).value();
     db.write();
